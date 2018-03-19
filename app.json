@@ -1,0 +1,42 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/list/list",
+    "pages/details/details",
+    "pages/MyDetails/MyDetails"
+  ],
+  "window":{
+    "backgroundTextStyle":"black",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "wechar",
+    "navigationBarTextStyle":"black"
+  },
+  "tabBar": {
+    "color": "#7A7E83",
+    "selectedColor": "#3cc51f",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "position":"bottom",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath":"image/icon_image/tapbar_left.png",
+        "selectedIconPath":"image/icon_image/tapbar_left_HL.png",
+        "text": "便笺"
+      },
+      {
+        "pagePath": "pages/details/details",
+        "iconPath": "image/icon_image/tapbar_middle.png",
+        "selectedIconPath": "image/icon_image/tapbar_middle_HL.png",
+        "text": "日记"
+      },
+      {
+        "pagePath": "pages/MyDetails/MyDetails",
+        "iconPath": "image/icon_image/tapbar_middle.png",
+        "selectedIconPath": "image/icon_image/tapbar_middle_HL.png",
+        "text": "关于我"
+      }
+    ]
+  }
+}

@@ -1,0 +1,77 @@
+/**index.wxss**/
+
+.page-top{
+  box-shadow:-3px 0px 8px #333333;
+  width: 750rpx;
+  position: fixed;
+  z-index: 0;
+   transition: All 0.4s ease; 
+  -webkit-transition: All 0.4s ease; 
+}
+
+
+.top {
+  padding: 10rpx;
+  background-image: url(https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1516695877718&di=99233899b10065d10231694a9a48ab92&imgtype=0&src=http%3A%2F%2Fimg03.tooopen.com%2Fimages%2F20130916%2Fsy_41624317639.jpg);
+  background-repeat: repeat-y;
+  font-size: 20px;
+}
+@import '../../wsSearchView-master/wxSearchView/wxSearchView.wxss';
+
+.top .top-title {
+  margin-top: 130px;
+  margin-bottom: 20px;
+  margin-left: 15px;
+  font-size: 30px;
+}
+
+.card {
+  margin-bottom: 40rpx;
+  padding: 40rpx 0;
+  display: flex;
+  min-height: 300rpx;
+  background-color: #cf9;
+  justify-content: center;
+  align-items: top;
+  text-align: center;
+  font-size: 30rpx;
+  color: #353535;
+  line-height: 2em;
+  margin-top: 60rpx;
+}
+
+.bg-color {
+  background-color: #dcdcdc;
+}
+
+
+.card-wrp {
+  display: flex;
+  justify-content: center;
+  padding-right: 10rpx;
+  padding-left: 10rpx;
+}
+
+.card-item {
+  width: 360rpx;
+  height: 360rpx;
+  font-size: 46rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #22DD6D;
+  margin: 20rpx 10rpx 20rpx 10rpx;
+  border-radius: 15px;
+  box-shadow: 0 0 10px black;
+}
+
+.card-break-word {
+  word-wrap: break-word;
+  margin-left: 18px;
+  margin-right: 18px;
+  font-size: 16px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 5;
+  overflow: hidden;
+}

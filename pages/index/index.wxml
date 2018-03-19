@@ -1,0 +1,48 @@
+<!--index.wxml-->
+<!-- 定义一个模板 -->
+
+<view   bindtouchmove="tap_drag" bindtouchend="tap_end" bindtouchstart="tap_start" class="page-top" style="{{translate}}">
+        
+    
+
+  <view class="top" >
+
+    <view class="top-title" bindtap="tap_ch">{{TopTittle}}</view>
+  </view>
+  <view class="bg-color">
+
+
+  <!--  card First row  -->
+  <view class="card-wrp" style="flex-direction:row;">
+    <view class="card-item">
+      <text class="card-break-word">{{CardMsg}}</text>
+    </view>
+    <view class="card-item">
+      <text class="card-break-word">{{CardMsg}}</text>
+    </view>
+  </view>
+
+
+  <view class="card-wrp" style="flex-direction:row;">
+    <view class="card-item">
+      <text class="card-break-word">{{CardMsg}}</text>
+    </view>
+    <view class="card-item">
+      <text class="card-break-word">{{CardMsg}}</text>
+    </view>
+  </view>
+
+
+  <!--  card First row  -->
+  <view class="card-wrp" style="flex-direction:row;">
+    <view class="card-item">
+      <text class="card-break-word">{{CardMsg}}</text>
+    </view>
+    <view class="card-item">
+      <text class="card-break-word">{{CardMsg}}</text>
+    </view>
+  </view>
+
+
+</view>
+</view>

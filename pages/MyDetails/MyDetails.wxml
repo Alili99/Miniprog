@@ -1,0 +1,16 @@
+<!--pages/MyDetails/MyDetails.wxml-->
+
+
+<view class="title">
+  <view class="title-img">
+    <image src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1518086357945&di=1c4e418acd9abf98ec004e039d4132ab&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F01932457468bff6ac72525aeb13c58.png"></image>
+  </view>
+
+  <view class="title-name"></view>
+
+  <view class="title-sign"></view>
+
+</view>
+<view class="list">
+
+</view>

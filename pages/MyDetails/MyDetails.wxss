@@ -1,0 +1,23 @@
+.title {
+  padding: 10rpx;
+  background-color: #808080;
+  background-repeat: repeat-y;
+}
+
+.title .title-img {
+  margin-top: 170rpx;
+  margin-left: 500rpx;
+  
+}
+
+.title .title-img image {
+  /* outline: #00FF00 solid thick;
+  border-radius: 50%;*/
+  width: 150rpx;
+  height: 150rpx; 
+
+  border: 10rpx solid #000000; 
+-webkit-border-radius: 50%;
+border-radius: 50%
+ 
+}
