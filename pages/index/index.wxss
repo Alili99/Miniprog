@@ -3,7 +3,7 @@
 .page-top{
   box-shadow:-3px 0px 8px #333333;
   width: 750rpx;
-  position: fixed;
+  
   z-index: 0;
    transition: All 0.4s ease; 
   -webkit-transition: All 0.4s ease; 
@@ -75,3 +75,13 @@
   -webkit-line-clamp: 5;
   overflow: hidden;
 }
+
+.c-state1{
+  transform: rotate(0deg) scale(1) translate(75%,0%); 
+  -webkit-transform: rotate(0deg) scale(1) translate(75%,0%); 
+}
+.c-state2{
+  transform: rotate(0deg) scale(.8) translate(75%,0%); 
+  -webkit-transform: rotate(0deg) scale(.8) translate(75%,0%); 
+}
+

@@ -1,0 +1,29 @@
+<!--pages/listPage/listPage.wxml-->
+
+  <view class="title">
+    <view class='more' touchstart="tcst">
+      <image src="{{backbtnurl}}" class="backbtn"></image>
+    </view>
+    <view class="more">
+      <text style='padding-left: 50rpx;font-size:18px'>墨笺</text>
+    </view>
+    <view class="more">
+      <image src='../../image/timebtn.png' class="timebtn"></image>
+    </view>
+    <view class="more">
+      <image src='../../image/pointbtn.png' class="pointbtn"></image>
+    </view>
+  </view>
+
+  <view class="bg-box">
+    
+    <view class="page-section">
+      <view class="textarea-wrp">
+        <textarea bindblur="bindTextAreaBlur" auto-height />
+      </view>
+    </view>
+
+
+    <view class='line'>------------</view>
+    <view class="change-time">修改日期:{{changeTime}}</view>
+  </view>
