@@ -1,13 +1,11 @@
 {
   "pages":[
-    "pages/listPage/listPage",
     "pages/index/index",
+    "pages/listPage/listPage",
     "pages/logs/logs",
     "pages/list/list",
-    
     "pages/details/details",
     "pages/MyDetails/MyDetails"
-
   ],
   "window":{
     "backgroundTextStyle":"black",
@@ -23,18 +21,11 @@
     "position":"bottom",
     "list": [
       {
-        "pagePath": "pages/listPage/listPage",
-        "iconPath": "image/icon_image/tapbar_middle.png",
-        "selectedIconPath": "image/icon_image/tapbar_middle_HL.png",
-        "text": "日记"
-      },
-      {
         "pagePath": "pages/index/index",
         "iconPath":"image/icon_image/tapbar_left.png",
         "selectedIconPath":"image/icon_image/tapbar_left_HL.png",
         "text": "便笺"
       },
-      
       {
         "pagePath": "pages/MyDetails/MyDetails",
         "iconPath": "image/icon_image/tapbar_middle.png",

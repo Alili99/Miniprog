@@ -7,7 +7,15 @@ Page({
   data: {
   backbtnurl: "../../image/backbtn.png",
   changeTime: "2018年1月1日",
-  focus: false
+  focus: false,
+  array: ['中国', '美国', '巴西', '日本'],
+  index: 0
+  },
+  bindPickerChange: function (e) {
+    console.log('picker发送选择改变，携带值为', e.detail.value)
+    this.setData({
+      index: e.detail.value
+    })
   },
   tcst: function(e){
    e.setData({

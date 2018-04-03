@@ -1,12 +1,14 @@
-.title {
+page {
   padding: 10rpx;
-  background-color: #808080;
+  background-color: #ebeff2;
   background-repeat: repeat-y;
 }
 
 .title .title-img {
-  margin-top: 170rpx;
-  margin-left: 500rpx;
+  margin-top: 180rpx; 
+  display: flex;
+  justify-content: center;
+  
   
 }
 
@@ -16,8 +18,7 @@
   width: 150rpx;
   height: 150rpx; 
 
-  border: 10rpx solid #000000; 
--webkit-border-radius: 50%;
+ 
 border-radius: 50%
  
 }

@@ -4,31 +4,65 @@
 <view class="page-top {{open ? 'c-state1' : ''}}">
 
   <view class="top">
-    <view class="top-title" bindtap="tap_ch">{{TopTittle}}</view>
+    <view class="top-title">
+      <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+        {{array[index]}}
+      </picker>
+    </view>
   </view>
+
+
   <view class="bg-color">
+    <view class="search">
+      <view class=" input-btn">
+
+        <input class="weui-input" maxlength="10" placeholder="输入以搜索便笺" />
+
+      </view>
+      <view>
+        <image src='../../image/search.png' class='search-btn'></image>
+      </view>
+    </view>
 
 
     <!--  card First row  -->
     <view class="card-wrp" style="flex-direction:row;">
+      <view class="card-item" bindtap="toast">
+        <text class="card-break-word">{{CardMsg}}</text>
+      </view>
+      <view class="card-item">
+        <text class="card-break-word">{{CardMsg}}</text>
+      </view>
       <view class="card-item">
         <text class="card-break-word">{{CardMsg}}</text>
       </view>
       <view class="card-item">
         <text class="card-break-word">{{CardMsg}}</text>
       </view>
-    </view>
+      <view class="card-item">
+        <text class="card-break-word">{{CardMsg}}</text>
+      </view>
+      <view class="card-item">
+        <text class="card-break-word">{{CardMsg}}</text>
+      </view>
+      <view class="card-item">
+        <text class="card-break-word">{{CardMsg}}</text>
+      </view>
+      <view class="card-item">
+        <text class="card-break-word">{{CardMsg}}</text>
+      </view>
+      <view class="card-item">
+        <text class="card-break-word">{{CardMsg}}</text>
+      </view>
+      <view class="card-item">
+        <text class="card-break-word">{{CardMsg}}</text>
+      </view>
+      <view class="card-item">
+        <text class="card-break-word">{{CardMsg}}</text>
+      </view>
 
 
-    <view class="card-wrp" style="flex-direction:row;">
-      <view class="card-item">
-        <text class="card-break-word">{{CardMsg}}</text>
-      </view>
-      <view class="card-item">
-        <text class="card-break-word">{{CardMsg}}</text>
-      </view>
     </view>
 
   </view>
 </view>
-

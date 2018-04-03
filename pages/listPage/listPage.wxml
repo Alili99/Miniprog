@@ -11,7 +11,10 @@
       <image src='../../image/timebtn.png' class="timebtn"></image>
     </view>
     <view class="more">
-      <image src='../../image/pointbtn.png' class="pointbtn"></image>
+    <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+        
+      
+      <image src='../../image/pointbtn.png' class="pointbtn"></image></picker>
     </view>
   </view>
 
@@ -19,11 +22,14 @@
     
     <view class="page-section">
       <view class="textarea-wrp">
-        <textarea bindblur="bindTextAreaBlur" auto-height />
+      
+        <textarea bindblur="bindTextAreaBlur" auto-height auto-focus="true"/>
+        <image src='../../image/meihua.png'></image>
       </view>
     </view>
 
 
     <view class='line'>------------</view>
     <view class="change-time">修改日期:{{changeTime}}</view>
+    <image src='../../image/meihua.png'></image>
   </view>
