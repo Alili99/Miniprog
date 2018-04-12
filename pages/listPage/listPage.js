@@ -11,6 +11,11 @@ Page({
   array: ['中国', '美国', '巴西', '日本'],
   index: 0
   },
+  toast: function () {
+    wx.navigateTo({
+      url: '../index/index'
+    })
+  },
   bindPickerChange: function (e) {
     console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({

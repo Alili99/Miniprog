@@ -1,7 +1,7 @@
 <!--pages/listPage/listPage.wxml-->
 
   <view class="title">
-    <view class='more' touchstart="tcst">
+    <view class='more' touchstart="tcst" bindtap="toast">
       <image src="{{backbtnurl}}" class="backbtn"></image>
     </view>
     <view class="more">
