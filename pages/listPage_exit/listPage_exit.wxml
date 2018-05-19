@@ -4,7 +4,7 @@
 <!--  **********************************************   -->
 <!--                头部导航栏模块                      -->
 <!--  **********************************************   -->
-   <view class="title">
+<view class="title">
 
   <!--                    头部返回按钮                  -->
   <view class="more" bindtap="toast">
@@ -17,7 +17,7 @@
   </view>
 
   <view class="more">
-    <image src='../../image/timebtn.png' class="timebtn"></image>
+    <image src='../../image/timebtn.png' class="timebtn" bindtap='changebackground'></image>
   </view>
 
   <view class="more">
@@ -25,8 +25,7 @@
       <image src='../../image/pointbtn.png' class="pointbtn"></image>
     </picker>
   </view>
-</view> 
-
+</view>
 
 
 <!--  **********************************************   -->
@@ -34,15 +33,15 @@
 <!--  **********************************************   -->
 <view class="page-section">
   <view class="textarea-wrp">
-    <textarea bindblur="bindTextAreaBlur" auto-height auto-focus="true" value='{{TextMin}}' />
+    <textarea bindblur="bindTextAreaBlur" auto-height auto-focus="true" value='{{TextMin}}' maxlength='-1' />
   </view>
 </view>
 
 <!--  **********************************************   -->
 <!--                    图片模块                        -->
 <!--  **********************************************   -->
-<view wx:for="{{ImagePaths}}" wx:for-item="tempFilePaths" wx:key='' style='margin:20px auto;text-align:center;width: 720rpx'>
-  <image src="{{tempFilePaths}}" mode='widthFix' id="" style=''/>
+<view wx:for="{{ImagePaths}}" wx:for-item="tempFilePaths" wx:key='' style='margin:20px auto;text-align:center;width: 720rpx' bindlongpress='deleteimage'>
+  <image src="{{tempFilePaths.path}}" mode='widthFix' id='{{tempFilePaths.id}}' style=''/>
 </view>
 
 
@@ -51,7 +50,7 @@
 <!--  **********************************************   -->
 <view class='vedio' wx:if="{{video}}">
   <video class="video" src="{{video}}"></video>
-  <view style="text-align:center;color:green;font-size:14px;padding-top:7px;">当前视频大小为{{size}}M</view>
+  <!-- <view style="text-align:center;color:green;font-size:14px;padding-top:7px;">当前视频大小为{{size}}M</view> -->
 </view>
 
 

@@ -1,11 +1,11 @@
 {
   "pages":[
+    
     "pages/index/index",
     "pages/listPage/listPage",
-    "pages/logs/logs",
-    "pages/list/list",
-    "pages/details/details",
-    "pages/MyDetails/MyDetails"
+    "pages/MyDetails/MyDetails",
+    "pages/listPage_exit/listPage_exit",
+    "pages/listPage_share/listPage_share"
   ],
   "window":{
     "backgroundTextStyle":"black",

@@ -15,15 +15,15 @@ page {
 
 .top {
   padding: 10rpx;
-  background-image: url(https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1516695877718&di=99233899b10065d10231694a9a48ab92&imgtype=0&src=http%3A%2F%2Fimg03.tooopen.com%2Fimages%2F20130916%2Fsy_41624317639.jpg);
+  background-image: url(http://pic.pptbz.com/pptpic/201408/2014082911551907.jpg);
   background-repeat: repeat-y;
   font-size: 20px;
   height: 340rpx;
 }
 @import '../../wsSearchView-master/wxSearchView/wxSearchView.wxss';
-
 .top .top-title {
-  margin-top: 100px;
+  font-family:STFangsong;
+  margin-top: 140px;
   margin-bottom: 20px;
   margin-left: 15px;
   font-size: 30px;
@@ -62,34 +62,23 @@ page {
   text-align: center;
 }
 
-/* .picker-btn{
-  background-color: white;
-  margin-top: 20rpx;
-  margin-left: 20rpx;
-  margin-right: 20rpx;
-  border:.2px solid;
-border-radius:25px;
-text-align: center;
-} */
-
 .input-btn {
   width: 610rpx;
   background-color: white;
   margin-top: 20rpx;
   margin-left: 20rpx;
-  
   border: 0.2px solid;
   border-radius: 25px;
 }
 
-.search{
+.search {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
-   align-items: flex-start;
+  align-items: flex-start;
 }
 
-.search-btn{
+.search-btn {
   width: 40rpx;
   height: 40rpx;
   margin-top: 24rpx;
@@ -115,4 +104,15 @@ text-align: center;
 .c-state2 {
   transform: rotate(0deg) scale(0.8) translate(75%, 0%);
   -webkit-transform: rotate(0deg) scale(0.8) translate(75%, 0%);
+}
+
+.add-btn {
+  width: 66rpx;
+  height: 66rpx;
+  position: fixed;
+  bottom: 20px;
+  right: 25px;
+  font-size: 0;
+  line-height: 0;
+  z-index: 100;
 }

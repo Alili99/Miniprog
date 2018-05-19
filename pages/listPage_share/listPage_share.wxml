@@ -1,32 +1,7 @@
 <!--pages/listPage/listPage.wxml-->
 
 
-<!--  **********************************************   -->
-<!--                头部导航栏模块                      -->
-<!--  **********************************************   -->
-   <view class="title">
-
-  <!--                    头部返回按钮                  -->
-  <view class="more" bindtap="toast">
-    <image src="{{backbtnurl}}" class="backbtn"></image>
-  </view>
-
-  <!--                    头部标题                     -->
-  <view class="more">
-    <text style='padding-left: 50rpx;font-size:18px'>墨笺</text>
-  </view>
-
-  <view class="more">
-    <image src='../../image/timebtn.png' class="timebtn"></image>
-  </view>
-
-  <view class="more">
-    <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
-      <image src='../../image/pointbtn.png' class="pointbtn"></image>
-    </picker>
-  </view>
-</view> 
-
+  
 
 
 <!--  **********************************************   -->
@@ -34,17 +9,16 @@
 <!--  **********************************************   -->
 <view class="page-section">
   <view class="textarea-wrp">
-    <textarea bindblur="bindTextAreaBlur" auto-height auto-focus="true" value='{{TextMin}}' />
+    <textarea bindblur="bindTextAreaBlur" auto-height auto-focus="true" value='{{TextMin}}' disabled='ture'/>
   </view>
 </view>
 
 <!--  **********************************************   -->
 <!--                    图片模块                        -->
 <!--  **********************************************   -->
-<view wx:for="{{ImagePaths}}" wx:for-item="tempFilePaths" wx:key='' style='margin:20px auto;text-align:center;width: 720rpx'>
-  <image src="{{tempFilePaths}}" mode='widthFix' id="" style=''/>
+<view wx:for="{{ImagePaths}}" wx:for-item="tempFilePaths" wx:key='' style='margin:20px auto;text-align:center;width: 720rpx' bindlongpress='deleteimage'>
+  <image src="{{tempFilePaths.path}}" mode='widthFix' id='{{tempFilePaths.id}}' style=''/>
 </view>
-
 
 <!--  **********************************************   -->
 <!--                    视频模块                        -->
@@ -58,10 +32,10 @@
 <!--  **********************************************   -->
 <!--                    上传按钮模块                        -->
 <!--  **********************************************   -->
-<view class='UpMediaButton'>
+<!-- <view class='UpMediaButton'>
   <button style="margin:30rpx;width:300rpx" bindtap="chooseimage">插入图片</button>
   <button style="margin:30rpx;width:300rpx" bindtap="choosevideo">插入视频</button>
-</view>
+</view> -->
 
 
 <!--  **********************************************   -->
@@ -69,4 +43,4 @@
 <!--  **********************************************   -->
 <view class='line'>------------</view>
 <view class="change-time">修改日期:{{changeTime}}</view>
-<image src='{{background_image}}'></image>
+<image src='../../image/meihua.png'></image>

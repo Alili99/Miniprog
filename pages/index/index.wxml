@@ -1,68 +1,46 @@
 <!--index.wxml-->
 <!-- 定义一个模板 -->
 
-<view class="page-top {{open ? 'c-state1' : ''}}">
+<!--  **********************************************   -->
+<!--                    首页便笺类型选择模块               -->
+<!--  **********************************************   -->
+<view class="top">
+  <view class="top-title">
+    <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+      {{array[index]}}
+    </picker>
+  </view>
+</view>
 
-  <view class="top">
-    <view class="top-title">
-      <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
-        {{array[index]}}
-      </picker>
+
+<view class="bg-color">
+  <!--  **********************************************   -->
+  <!--                    首页搜索模块                    -->
+  <!--  **********************************************   -->
+  <!-- <view class="search">
+    <view class=" input-btn">
+      <input class="weui-input" maxlength="10" placeholder="输入以搜索便笺" />
+    </view>
+    <view>
+      <image src='../../image/search.png' class='search-btn'></image>
+    </view>
+
+  </view> -->
+
+<image src="../../image/sumbtn.png"  class="add-btn" bindtap='Add'></image>
+  <!--  **********************************************   -->
+  <!--                    首页便笺缩略图                  -->
+  <!--  **********************************************   -->
+  <view class="card-wrp" style="flex-direction:row;">
+    <view wx:for="{{MsgArray}}" wx:for-item="Msg" wx:key="message">
+      <view class="card-item" bindlongpress="bingLongTap" bindtap="bindTap"  id="{{Msg.id}}">
+        <text class="card-break-word" id="{{Msg.id}}" >{{Msg.message}}</text>
+      </view>
     </view>
   </view>
 
+  <!--  **********************************************   -->
+  <!--                    首页新建便笺按钮                -->
+  <!--  **********************************************   -->
 
-  <view class="bg-color">
-    <view class="search">
-      <view class=" input-btn">
-
-        <input class="weui-input" maxlength="10" placeholder="输入以搜索便笺" />
-
-      </view>
-      <view>
-        <image src='../../image/search.png' class='search-btn'></image>
-      </view>
-    </view>
-
-
-    <!--  card First row  -->
-    <view class="card-wrp" style="flex-direction:row;">
-      <view class="card-item" bindtap="toast">
-        <text class="card-break-word">{{CardMsg}}</text>
-      </view>
-      <view class="card-item">
-        <text class="card-break-word">{{CardMsg}}</text>
-      </view>
-      <view class="card-item">
-        <text class="card-break-word">{{CardMsg}}</text>
-      </view>
-      <view class="card-item">
-        <text class="card-break-word">{{CardMsg}}</text>
-      </view>
-      <view class="card-item">
-        <text class="card-break-word">{{CardMsg}}</text>
-      </view>
-      <view class="card-item">
-        <text class="card-break-word">{{CardMsg}}</text>
-      </view>
-      <view class="card-item">
-        <text class="card-break-word">{{CardMsg}}</text>
-      </view>
-      <view class="card-item">
-        <text class="card-break-word">{{CardMsg}}</text>
-      </view>
-      <view class="card-item">
-        <text class="card-break-word">{{CardMsg}}</text>
-      </view>
-      <view class="card-item">
-        <text class="card-break-word">{{CardMsg}}</text>
-      </view>
-      <view class="card-item">
-        <text class="card-break-word">{{CardMsg}}</text>
-      </view>
-
-
-    </view>
-
-  </view>
 </view>
