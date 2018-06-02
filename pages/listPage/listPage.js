@@ -57,10 +57,10 @@ Page({
 
   //返回更新函数
   toast: function (e) {
+    flag=0;
     var that = this;
     DESKEY = CryptoJS.SHA256(uuidv4).toString();
     console.log("!!noteid=" + that.data.note_id);
-
     //将生成的DES密钥保存在本地
     wx.setStorage({
       key: that.data.note_id + '',
@@ -69,17 +69,16 @@ Page({
         console.log(res);
       }
     });
+    var myData=new Date();
     var pwd = DESKEY;
+    console.log("加密开始时间：" + myData.getMilliseconds())
+    console.log("密钥为："+pwd)
     var mi_temp = CryptoJS.DES.encrypt(that.data.TextMin, pwd).toString();//生成加密密文
+    console.log("加密结束时间：" + myData.getMilliseconds())
+    console.log("密文为："+mi_temp)
     var mi = mi_temp.replace(/\s/g, '+');
-
     that.data.TextMin = mi;
-    console.log('新建pwd=' + pwd);
-    console.log('新建mi=' + mi)
-
-
-
-
+    
     wx.request({
       url: 'https://www.storyeveryday.com/test/notes/updateNoteTxt' + "?content=" + that.data.TextMin + "&note_id=" + that.data.note_id,
       method: 'PUT', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT,
@@ -88,10 +87,18 @@ Page({
       },
       // header: {}, // 设置请求的 header
       success: function (res) {
-        console.log("修改便笺完成")
+        wx.showToast({
+          title: '新建便笺成功',  //标题  
+          icon: 'success',  //图标，支持"success"、"loading"  
+          //image: '../image/img.png',  //自定义图标的本地路径，image 的优先级高于 icon  
+          duration: 1500, //提示的延迟时间，单位毫秒，默认：1500  
+          mask: true,  //是否显示透明蒙层，防止触摸穿透，默认：false  
+          success: function () { }, //接口调用成功的回调函数  
+          fail: function () { },  //接口调用失败的回调函数  
+          complete: function () { } //接口调用结束的回调函数  
+        })
       },
       fail: function (res) {
-
       }
     })
     wx.navigateBack({});
@@ -246,13 +253,14 @@ Page({
       sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
       success: function (res) {
         console.log("修改背景图片成功")
-        that.setData({
-          background_image: res.tempFilePaths[0]
-        })
         wx.setStorage({
           key: 'background_image',
           data: res.tempFilePaths[0]
         })
+        that.setData({
+          background_image: res.tempFilePaths[0]
+        })
+        that.onShow();
       }
     })
 

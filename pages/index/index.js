@@ -11,7 +11,7 @@ var uuidv4 = require('../../uuid/we-uuidv4');
 Page({
   data: {
     TopTittle: '便笺',
-    array: ['便笺', '日记', '回收站'],
+    array: ['便笺', '日记', '回收站','删除全部便笺'],
     MsgArray: [],
     index: 0,
     user_id: '',
@@ -25,6 +25,77 @@ Page({
   //*************************************************************
   bindPickerChange: function (e) {
     console.log('picker发送选择改变，携带值为', e.detail.value);
+    if (e.detail.value==3){
+      var that = this;
+      wx.login({
+        success: function (res) {
+          var code = res.code;
+          if (code) {
+            wx.request({
+              url: API_URL,
+              data: { code: res.code },
+              header: { 'content-type': 'application/x-www-form-urlencoded' },
+              method: 'POST',
+              success: function (result) {
+                wx.request({
+                  url: "https://www.storyeveryday.com/test/notes/getNoteIds?user_id=" + result.data.user_id,//获取所有便笺ID
+                  success: function (res1) {
+                    for (var j in res1.data.noteIds) {
+                      var noteid = res1.data.noteIds[j];
+                      wx.request({
+                        url: 'https://www.storyeveryday.com/test/notes/getNote?note_id=' + noteid,//获取用户便笺内容
+                        success: function (res2) {
+                          //删除全部便笺
+                          wx.getStorage({
+                            //获取数据的key
+                            key: 'user_id',
+                            success: function (res) {
+                              that.setData({
+                                user_id: res.data
+                              })
+                            }
+                          });
+                          wx.request({
+                            url: 'https://www.storyeveryday.com/test/notes/deleteNote2',
+                            method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT,
+                            data: {
+                              note_id: res2.data.note_id,
+                              user_id: that.data.user_id
+
+                            },
+                            // header: {}, // 设置请求的 header
+                            success: function (res) {
+                              console.log(res);
+                              that.onShow();
+                            },
+                            fail: function (res) {
+                            }
+                          })
+                        }
+                      })
+                    }
+                  }
+                })
+              }
+            })
+            // ------------------------------------
+
+          } else {
+            console.log('获取用户登录态失败：' + res.errMsg);
+          }
+        }
+      });
+      wx.showToast({
+        title: '删除所有便笺成功',  //标题  
+        icon: 'success',  //图标，支持"success"、"loading"  
+        //image: '../image/img.png',  //自定义图标的本地路径，image 的优先级高于 icon  
+        duration: 1500, //提示的延迟时间，单位毫秒，默认：1500  
+        mask: true,  //是否显示透明蒙层，防止触摸穿透，默认：false  
+        success: function () { }, //接口调用成功的回调函数  
+        fail: function () { },  //接口调用失败的回调函数  
+        complete: function () { } //接口调用结束的回调函数  
+      })  
+    }
     var temp = [];
     this.setData({
       state: e.detail.value,
@@ -79,6 +150,16 @@ Page({
       },
       // header: {}, // 设置请求的 header
       success: function (res) {
+        wx.showToast({
+          title: '删除便笺成功',  //标题  
+          icon: 'success',  //图标，支持"success"、"loading"  
+          //image: '../image/img.png',  //自定义图标的本地路径，image 的优先级高于 icon  
+          duration: 1500, //提示的延迟时间，单位毫秒，默认：1500  
+          mask: true,  //是否显示透明蒙层，防止触摸穿透，默认：false  
+          success: function () { }, //接口调用成功的回调函数  
+          fail: function () { },  //接口调用失败的回调函数  
+          complete: function () { } //接口调用结束的回调函数  
+        })
         var temp=[];
         that.setData({
           MsgArray:temp
@@ -87,7 +168,6 @@ Page({
         that.onShow();
       },
       fail: function (res) {
-
       }
     })
   },
@@ -163,35 +243,6 @@ Page({
                           });
                         }
 
-
-
-                        //删除全部便笺
-                        // wx.getStorage({
-                        //   //获取数据的key
-                        //   key: 'user_id',
-                        //   success: function (res) {
-                        //     that.setData({
-                        //       user_id: res.data
-                        //     })
-                        //   }
-                        // });
-                        // wx.request({
-                        //   url: 'https://www.storyeveryday.com/test/notes/deleteNote2',
-                        //   method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT,
-                        //   data: {
-                        //     note_id: res2.data.note_id,
-                        //     user_id: that.data.user_id
-
-                        //   },
-                        //   // header: {}, // 设置请求的 header
-                        //   success: function (res) {
-                        //     console.log(res);
-                        //     that.onShow();
-                        //   },
-                        //   fail: function (res) {
-
-                        //   }
-                        // })
 
 
                       }

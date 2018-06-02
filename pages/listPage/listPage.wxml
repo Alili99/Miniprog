@@ -17,7 +17,7 @@
   </view>
 
   <view class="more">
-    <image src='../../image/timebtn.png' class="timebtn"></image>
+    <image src='../../image/timebtn.png' class="timebtn" bindtap='changebackground'></image>
   </view>
 
   <view class="more">

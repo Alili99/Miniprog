@@ -42,7 +42,16 @@ Page({
       url: 'https://www.storyeveryday.com/test/notes/updateNoteState?note_id=' + that.data.note_id + "&state=" + that.data.state,
       method: "PUT",
       success: function (res) {
-
+        wx.showToast({
+          title: '修改便笺成功',  //标题  
+          icon: 'success',  //图标，支持"success"、"loading"  
+          //image: '../image/img.png',  //自定义图标的本地路径，image 的优先级高于 icon  
+          duration: 1500, //提示的延迟时间，单位毫秒，默认：1500  
+          mask: true,  //是否显示透明蒙层，防止触摸穿透，默认：false  
+          success: function () { }, //接口调用成功的回调函数  
+          fail: function () { },  //接口调用失败的回调函数  
+          complete: function () { } //接口调用结束的回调函数  
+        })
       }
     })
   },
@@ -155,14 +164,7 @@ Page({
 
   //图片删除函数
   deleteimage: function (e) {
-    wx.showToast({
-      title: '图片删除中',
-      icon: 'loading',
-      duration: 10000,
-      success: function () {
-
-      }
-    })
+    
     var that = this;
 
     wx.request({
@@ -172,6 +174,16 @@ Page({
         user_id: that.data.user_id
       },
       success: function (res) {
+        wx.showToast({
+          title: '删除图片成功',  //标题  
+          icon: 'success',  //图标，支持"success"、"loading"  
+          //image: '../image/img.png',  //自定义图标的本地路径，image 的优先级高于 icon  
+          duration: 1500, //提示的延迟时间，单位毫秒，默认：1500  
+          mask: true,  //是否显示透明蒙层，防止触摸穿透，默认：false  
+          success: function () { }, //接口调用成功的回调函数  
+          fail: function () { },  //接口调用失败的回调函数  
+          complete: function () { } //接口调用结束的回调函数  
+        })
         var temp = [];
         that.setData({
           ImagePaths: temp
@@ -179,7 +191,7 @@ Page({
         that.onShow();
       }
     });
-    wx.hideToast();
+    
   },
 
   // 视频上传函数
@@ -245,14 +257,25 @@ Page({
       sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
       sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
       success: function (res) {
-        console.log("修改背景图片成功")
-        that.setData({
-          background_image: res.tempFilePaths[0]
+        wx.showToast({
+          title: '修改背景图片成功',  //标题  
+          icon: 'success',  //图标，支持"success"、"loading"  
+          //image: '../image/img.png',  //自定义图标的本地路径，image 的优先级高于 icon  
+          duration: 1500, //提示的延迟时间，单位毫秒，默认：1500  
+          mask: true,  //是否显示透明蒙层，防止触摸穿透，默认：false  
+          success: function () { }, //接口调用成功的回调函数  
+          fail: function () { },  //接口调用失败的回调函数  
+          complete: function () { } //接口调用结束的回调函数  
         })
+        
         wx.setStorage({
           key: 'background_image',
           data: res.tempFilePaths[0]
         })
+        that.setData({
+          background_image: res.tempFilePaths[0]
+        })
+        that.onShow();
       }
     })
 
@@ -348,7 +371,7 @@ Page({
 
       }
     })
-    wx.hideToast();
+   
   },
 
   /**
