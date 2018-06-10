@@ -27,10 +27,16 @@ page {
   padding-left: 30rpx;
 }
 
+.Abtn {
+  height: 55rpx;
+  width: 55rpx;
+  padding-left: 310rpx;
+}
+
 .timebtn {
   height: 55rpx;
   width: 55rpx;
-  padding-left: 410rpx;
+  padding-left: 50rpx;
 }
 
 .pointbtn {

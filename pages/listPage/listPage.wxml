@@ -4,7 +4,7 @@
 <!--  **********************************************   -->
 <!--                头部导航栏模块                      -->
 <!--  **********************************************   -->
-   <view class="title">
+<view class="title">
 
   <!--                    头部返回按钮                  -->
   <view class="more" bindtap="toast">
@@ -25,7 +25,7 @@
       <image src='../../image/pointbtn.png' class="pointbtn"></image>
     </picker>
   </view>
-</view> 
+</view>
 
 
 
@@ -34,7 +34,7 @@
 <!--  **********************************************   -->
 <view class="page-section">
   <view class="textarea-wrp">
-    <textarea bindblur="bindTextAreaBlur" auto-height auto-focus="true" value='{{TextMin}}' />
+    <textarea bindinput="bindTextAreaBlur" bindblur="gettextdata" auto-height auto-focus="true" value='{{TextMin}}' />
   </view>
 </view>
 
@@ -42,7 +42,7 @@
 <!--                    图片模块                        -->
 <!--  **********************************************   -->
 <view wx:for="{{ImagePaths}}" wx:for-item="tempFilePaths" wx:key='' style='margin:20px auto;text-align:center;width: 720rpx'>
-  <image src="{{tempFilePaths}}" mode='widthFix' id="" style=''/>
+  <image src="{{tempFilePaths}}" mode='widthFix' id="" style='' />
 </view>
 
 

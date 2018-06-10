@@ -184,12 +184,16 @@ Page({
 
   onShow: function () {
     console.log("pingker refresh")
+    this.setData({
+      'MsgArray': []
+    });
     this.data.MsgArray = [];
     var that = this;
     wx.login({
       success: function (res) {
         var code = res.code;
         if (code) {
+          
           console.log('获取用户登录凭证：' + code);
           // --------- 发送凭证 ------------------
           wx.request({

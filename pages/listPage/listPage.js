@@ -39,7 +39,7 @@ Page({
   },
 
   bindPickerChange: function (e) {
-    var that=this;
+    var that = this;
     console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
       index: e.detail.value,
@@ -47,18 +47,19 @@ Page({
     })
 
     wx.request({
-      url: 'https://www.storyeveryday.com/test/notes/updateNoteState?note_id='+that.data.note_id+"&state="+that.data.state,
-      method:"PUT",
-      success:function(res){
-        
+      url: 'https://www.storyeveryday.com/test/notes/updateNoteState?note_id=' + that.data.note_id + "&state=" + that.data.state,
+      method: "PUT",
+      success: function (res) {
+
       }
     })
   },
 
   //返回更新函数
   toast: function (e) {
-    flag=0;
+    flag = 0;
     var that = this;
+    console.log("uuid:" + uuidv4);
     DESKEY = CryptoJS.SHA256(uuidv4).toString();
     console.log("!!noteid=" + that.data.note_id);
     //将生成的DES密钥保存在本地
@@ -69,16 +70,17 @@ Page({
         console.log(res);
       }
     });
-    var myData=new Date();
+    var myData = new Date();
     var pwd = DESKEY;
-    console.log("加密开始时间：" + myData.getMilliseconds())
-    console.log("密钥为："+pwd)
+    console.log("明文为：" + that.data.TextMin);
+    //console.log("加密开始时间：" + myData.getMilliseconds())
+    console.log("密钥为：" + pwd)
     var mi_temp = CryptoJS.DES.encrypt(that.data.TextMin, pwd).toString();//生成加密密文
-    console.log("加密结束时间：" + myData.getMilliseconds())
-    console.log("密文为："+mi_temp)
+    //console.log("加密结束时间：" + myData.getMilliseconds())
+    console.log("密文为：" + mi_temp)
     var mi = mi_temp.replace(/\s/g, '+');
     that.data.TextMin = mi;
-    
+
     wx.request({
       url: 'https://www.storyeveryday.com/test/notes/updateNoteTxt' + "?content=" + that.data.TextMin + "&note_id=" + that.data.note_id,
       method: 'PUT', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT,
@@ -114,7 +116,7 @@ Page({
   * TEXTARE 获取textare的值
   */
   bindTextAreaBlur: function (e) {
-    if (e.detail && e.detail.value.length > 0 && flag == 0) {
+    if (e.detail && e.detail.value.length > 0) {
       this.setData({
         TextMin: e.detail.value
       });
@@ -144,6 +146,8 @@ Page({
 
     }
   },
+
+  
 
 
 
@@ -197,27 +201,40 @@ Page({
       maxDuration: 60,
       camera: 'back',
       success: function (res) {
+        if ((res.size / (1024 * 1024)).toFixed(2) <= 2) {
+          wx.uploadFile({
+            url: "https://www.storyeveryday.com/test/fileUplode/picture2",
+            filePath: res.tempFilePath,
+            name: 'file',
+            formData: {
+              'user_id': that.data.user_id,
+              'note_id': that.data.note_id,
+            },
+            header: {
+              "Content-Type": "multipart/form-data"
+            },
+            success: function (res) {
+              console.log(res);
+            }
+          })
 
-        wx.uploadFile({
-          url: "https://www.storyeveryday.com/test/fileUplode/picture2",
-          filePath: res.tempFilePath,
-          name: 'file',
-          formData: {
-            'user_id': that.data.user_id,
-            'note_id': that.data.note_id,
-          },
-          header: {
-            "Content-Type": "multipart/form-data"
-          },
-          success: function (res) {
-            console.log(res);
-          }
-        })
+          that.setData({
+            video: res.tempFilePath,
+            size: (res.size / (1024 * 1024)).toFixed(2)
+          })
+        }else{
+          wx.showToast({
+            title: '视频超过2M',  //标题  
+            //icon: 'success',  //图标，支持"success"、"loading"  
+            image: '../../image/error.png',  //自定义图标的本地路径，image 的优先级高于 icon  
+            duration: 1500, //提示的延迟时间，单位毫秒，默认：1500  
+            mask: true,  //是否显示透明蒙层，防止触摸穿透，默认：false  
+            success: function () { }, //接口调用成功的回调函数  
+            fail: function () { },  //接口调用失败的回调函数  
+            complete: function () { } //接口调用结束的回调函数  
+          })
 
-        that.setData({
-          video: res.tempFilePath,
-          size: (res.size / (1024 * 1024)).toFixed(2)
-        })
+        }
       }
     })
   },
@@ -317,5 +334,3 @@ Page({
   onShareAppMessage: function () {
   }
 })
-var privateKey = '-----BEGIN RSA PRIVATE KEY-----MIICWwIBAAKBgGnyktNFsGYYAhj / hOBDZt1f38MVg8a / Oeohi4OLohM4I1K + qaJYrWeJRDxVef4R + 5bRxISNSxewfawtOF6w4xv8BXxdcmw+ Y1tpFbRyfK45Ezd2dJHb08YIaO4wKld+ x + n6ev3GCikfOLmfilbNj + pk24jZwia3k / vhvzg92OLHAgMBAAECgYAV4 / XsSzjgT1OXoKvuvl5xnQ6Zu0dH + FjaBGZUHrS1LeM2hIh + L75cZyM / KBYVpdeK2Pq2vI7obSH6Qjmkbv3tlO0TpCv2j9iuAUF4iifjpzmdDrdWtDsirUy9hfi2O5haDnIq / S2HdYTRrwJlfDJxuiRbSvTEjvy1W2tAsMMQAQJBALVOtxPC2V + VzHqzw8B4La7qAepbnbfjhmVhbI6C5L6BrCBP3xrEV6AKMgd9zfiOeVKOLIJhaXoF4lBSwxQMmscCQQCVmCbfohleM + 9Gaq2uqccrLKnd6cbBnR9lB7e5xeuNPL0b+ XJbe0VsuYT4JPN8ZYxIzift4kBa5DVH + 6VtyXgBAkBpW+ i / rwcqqJ4 + 35 / thOjnME0Up1Crv6gl2ct / tUi//BLOZBu+LkLNWZ9hAxZiTkjqVHxA9+KXajvteWqrh/eZAkBP1gPpFfmz7MOmMQjATpuczxlY9Yq9ib1XjebfnmE331KNu3Lsn71NaTUtuYq4uPlFYcCtlDIEUAafhA2lqgABAkEAlfqBG3ijRsgHxS + nUWgGRwAeQUSRg5Gr + B4rzydHv2ApDUtfOtTi3uQdfKImV0HibWJeYLEY + RA80KEw2Mp4Iw ==  -----END RSA PRIVATE KEY-----';
-var publicKey = '-----BEGIN PUBLIC KEY-----MIGeMA0GCSqGSIb3DQEBAQUAA4GMADCBiAKBgGnyktNFsGYYAhj / hOBDZt1f38MVg8a / Oeohi4OLohM4I1K + qaJYrWeJRDxVef4R + 5bRxISNSxewfawtOF6w4xv8BXxdcmw + Y1tpFbRyfK45Ezd2dJHb08YIaO4wKld + x + n6ev3GCikfOLmfilbNj + pk24jZwia3k / vhvzg92OLHAgMBAAE=-----END PUBLIC KEY-----'

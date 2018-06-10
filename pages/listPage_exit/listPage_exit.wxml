@@ -17,6 +17,10 @@
   </view>
 
   <view class="more">
+    <image src='../../image/Abtn.png' class="Abtn" bindtap='changewordsize'></image>
+  </view>
+
+  <view class="more">
     <image src='../../image/timebtn.png' class="timebtn" bindtap='changebackground'></image>
   </view>
 
@@ -27,11 +31,19 @@
   </view>
 </view>
 
+<!--  **********************************************   -->
+<!--                字体大小模块                        -->
+<!--  **********************************************   -->
+
+<view style='padding-top:120rpx' wx-if="{{wordsizeflag}}">
+  <slider value="{{fontsize}}" bindchange="sliderchange" min="12" max="50" show-value/>
+</view>
+
 
 <!--  **********************************************   -->
 <!--                文字输入模块                        -->
 <!--  **********************************************   -->
-<view class="page-section">
+<view class="page-section" style='font-size:{{fontsize}}px'>
   <view class="textarea-wrp">
     <textarea bindblur="bindTextAreaBlur" auto-height auto-focus="true" value='{{TextMin}}' maxlength='-1' />
   </view>

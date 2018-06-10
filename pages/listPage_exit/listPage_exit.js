@@ -26,7 +26,34 @@ Page({
     video_id: '',
     user_id: '',
     note_id: '',
-    DESKEY: ''
+    DESKEY: '',
+    wordsizeflag: 0,
+    fontsize: 12
+  },
+  sliderchange: function (e) {
+    console.log(e.detail.value)
+    this.setData({
+      'fontsize': e.detail.value
+    });
+    wx.setStorage({
+      key: 'font_size',
+      data: e.detail.value,
+      success: function (res2) {
+        
+
+      }
+    })
+  },
+  changewordsize: function (e) {
+    if (this.data.wordsizeflag == 0) {
+      this.setData({
+        'wordsizeflag': 1
+      })
+    } else {
+      this.setData({
+        'wordsizeflag': 0
+      })
+    }
   },
 
 
@@ -270,12 +297,18 @@ Page({
         
         wx.setStorage({
           key: 'background_image',
-          data: res.tempFilePaths[0]
+          data: res.tempFilePaths[0],
+          success:function(res2){
+            that.setData({
+              background_image: res.tempFilePaths[0]
+            })
+            
+          }
         })
         that.setData({
           background_image: res.tempFilePaths[0]
         })
-        that.onShow();
+        
       }
     })
 
@@ -285,12 +318,23 @@ Page({
    */
   onShow: function () {
     var that = this;
-
+    that.setData({
+      ImagePaths: []
+    })
     wx.getStorage({
       key: 'background_image',
       success: function (res) {
         that.setData({
           background_image: res.data
+        })
+      }
+    })
+
+    wx.getStorage({
+      key: 'font_size',
+      success: function (res) {
+        that.setData({
+          'fontsize': res.data
         })
       }
     })
@@ -318,14 +362,17 @@ Page({
         wx.getStorage({
           key: that.data.note_id + '',
           success: function (res) {
-
-
+            console.log("解密测试：");
+            
             var pwd = res.data;
-            console.log("getDESKEY=" + res.data)
+            //console.log("getDESKEY=" + res.data)
             var mi_temp = res2.data.content;
             var mi = mi_temp.replace(/\s/g, '+');
-
+            console.log("密文为：" +mi);
+            console.log("密钥为：" + pwd);
+            
             var result = CryptoJS.DES.decrypt(mi, pwd).toString(CryptoJS.enc.Utf8);
+            console.log("明文为：" + result)
 
             if (result == '') {
               result = '解析错误'
@@ -353,7 +400,7 @@ Page({
             })
 
           } else {
-            if (filetype == "jpg" || filetype == "png") {
+            if (filetype == "jpg" || filetype == "png" || filetype == "JPG") {
 
               var tempFilePaths = {};
               tempFilePaths.path = "https://www.storyeveryday.com/resource/" + fileid + "/" + filename;

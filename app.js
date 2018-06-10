@@ -35,6 +35,7 @@ App({
     })
   },
   globalData: {
-    background_image: "image/backbtn.png"
+    background_image: "image/backbtn.png",
+    font_size:12
   }
 })
